@@ -1,0 +1,14 @@
+.stripe {
+    @apply bg-green;
+    margin-left: -35px;
+    margin-right: -35px;
+    height: 25%;
+
+    transform: rotate(-5deg) skew(-5deg);
+}
+
+.stripe__content {
+    transform: skew(5deg) rotate(5deg);
+    font-size: calc(36px + (18 - 24)*(100vw - 400px)/(1200 - 400));
+    line-height: 1.5;
+}

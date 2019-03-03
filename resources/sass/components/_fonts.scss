@@ -1,0 +1,192 @@
+@font-face {
+    font-family: 'clarkson';
+    src: url('../fonts/clarksonscript-regular-webfont.woff2') format('woff2'),
+         url('../fonts/clarksonscript-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'audrey';
+    src: url('../fonts/audrey-bold-webfont.woff2') format('woff2'),
+         url('../fonts/audrey-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'audrey';
+    src: url('../fonts/audrey-boldoblique-webfont.woff2') format('woff2'),
+         url('../fonts/audrey-boldoblique-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'audrey';
+    src: url('../fonts/audrey-medium-webfont.woff2') format('woff2'),
+         url('../fonts/audrey-medium-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'audrey';
+    src: url('../fonts/audrey-mediumoblique-webfont.woff2') format('woff2'),
+         url('../fonts/audrey-mediumoblique-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'audrey';
+    src: url('../fonts/audrey-normal-webfont.woff2') format('woff2'),
+         url('../fonts/audrey-normal-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'audrey';
+    src: url('../fonts/audrey-normaloblique-webfont.woff2') format('woff2'),
+         url('../fonts/audrey-normaloblique-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'muli';
+    src: url('../fonts/muli-black-webfont.woff2') format('woff2'),
+         url('../fonts/muli-black-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'muli';
+    src: url('../fonts/muli-bold-webfont.woff2') format('woff2'),
+         url('../fonts/muli-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'muli';
+    src: url('../fonts/muli-extrabold-webfont.woff2') format('woff2'),
+         url('../fonts/muli-extrabold-webfont.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'muli';
+    src: url('../fonts/muli-extralight-webfont.woff2') format('woff2'),
+         url('../fonts/muli-extralight-webfont.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'muli';
+    src: url('../fonts/muli-light-webfont.woff2') format('woff2'),
+         url('../fonts/muli-light-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'muli';
+    src: url('../fonts/muli-regular-webfont.woff2') format('woff2'),
+         url('../fonts/muli-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'muli';
+    src: url('../fonts/muli-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/muli-semibold-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-black-webfont.woff2') format('woff2'),
+         url('../fonts/lato-black-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-blackitalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-blackitalic-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-bold-webfont.woff2') format('woff2'),
+         url('../fonts/lato-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-bolditalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-bolditalic-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-hairline-webfont.woff2') format('woff2'),
+         url('../fonts/lato-hairline-webfont.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-hairlineitalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-hairlineitalic-webfont.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-light-webfont.woff2') format('woff2'),
+         url('../fonts/lato-light-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-lightitalic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-lightitalic-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-regular-webfont.woff2') format('woff2'),
+         url('../fonts/lato-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-italic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-italic-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+}

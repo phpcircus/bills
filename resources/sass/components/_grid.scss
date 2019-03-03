@@ -1,0 +1,28 @@
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+}
+
+.col {
+    flex: 1 0 25%;
+    box-sizing: border-box;
+    padding: 0 0.5rem 1rem;
+}
+
+.col:nth-last-child(2):nth-child(4n) {
+  min-width: 33%;
+}
+
+.col:nth-child(3n) {
+  width: 33.333%;
+}
+
+.col:nth-child(5n) {
+  width: 50%;
+}
+
+.col:nth-child(7n) {
+  width: 66.666%;
+}

@@ -1,0 +1,39 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:vue/essential"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "globals": {
+        "Nova": true,
+        "axios": true,
+        "_": true,
+        "moment": true,
+        "DumpListener": true
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "vue/html-indent": [
+            "error",
+            4
+        ],
+        "space-before-function-paren": [
+            "error",
+            "always"
+        ],
+        "no-const-assign": "warn",
+        "no-this-before-super": "warn",
+        "no-undef": "warn",
+        "no-unreachable": "warn",
+        "no-unused-vars": "warn",
+        "constructor-super": "warn",
+        "valid-typeof": "warn",
+        "no-console": "off",
+        "semi": "off"
+    }
+}

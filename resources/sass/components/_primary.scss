@@ -1,0 +1,59 @@
+//--------------------General Styles--------------------//
+html {
+  overflow-y: scroll;
+}
+
+body {
+    @apply .bg-grey-light;
+    @apply .pt-0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+//--------------------Link Styles--------------------//
+a {
+  position: relative;
+  text-decoration: none;
+}
+
+a::after {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+a > svg, span > svg {
+    pointer-events: none;
+}
+
+span.pagination-link {
+    @apply .text-grey-dark;
+}
+
+//--------------------Transition Styles--------------------//
+.to-hidden {
+    display: none;
+    opacity: 0;
+    transition: .8s;
+}
+
+.to-show {
+    display: block;
+    opacity: 1;
+    transition: .8s;
+}
+
+//--------------------Borders and Shadows Styles--------------------//
+.shadow-offset {
+    box-shadow: 0 -2px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.fade-border {
+  border-bottom: 2px solid transparent;
+  -moz-border-image: -moz-linear-gradient(top, #3490DC 0%, #38C172 100%);
+  -webkit-border-image: -webkit-linear-gradient(top, #3490DC 0%, #38C172 100%);
+  border-image: linear-gradient(to right, #3490DC 0%, #38C172 100%);
+  border-image-slice: 1;
+}

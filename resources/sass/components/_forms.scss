@@ -1,0 +1,18 @@
+.accessible-input-container {
+    @apply .border-b .border-b-2 .border-blue-light;
+}
+
+.accessible-input-container-active {
+    @apply .border-b .border-b-2 .border-green-light;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+    @apply .text-blue;
+}

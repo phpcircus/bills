@@ -1,0 +1,51 @@
+.primary {
+    fill: #dae1e7;
+}
+
+.secondary {
+    fill: #F8FAFC;
+}
+
+.danger {
+    fill: #e3342f;
+}
+
+.primary_flip:hover {
+    fill: #FFFFFF;
+}
+
+.primary_parent {
+    svg, svg > path {
+        fill: #38C172;
+    }
+}
+
+.primary_parent_flip:hover {
+    svg, svg > path {
+        fill: #FFFFFF;
+    }
+}
+
+.danger_parent {
+    svg, svg > path {
+        fill: #e3342f;
+    }
+}
+
+.danger_parent_flip:hover {
+    svg, svg > path {
+        fill: #FFFFFF;
+    }
+}
+
+.danger_parent_reverse {
+    svg, svg > path {
+        fill: #FFFFFF;
+    }
+}
+
+.danger_parent_flip_reverse:hover {
+    svg, svg > path {
+        fill: #E3342F;
+    }
+}
