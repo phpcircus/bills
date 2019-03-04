@@ -64,7 +64,7 @@ class Bill extends Unguarded
      */
     public function getDueDayOfWeekAttribute()
     {
-        return $this->format('l');
+        return $this->due->format('l');
     }
 
     /**

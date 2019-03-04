@@ -1,6 +1,6 @@
 <?php
 
-$this->group(['middleware' => ['auth', 'verified']], function ($router) {
+Route::group(['middleware' => ['auth', 'verified']], function ($router) {
     $router->redirect('/home', '/');
     $router->get('/', LandingPage::class);
 
