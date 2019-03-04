@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use App\Events\Models\Bill\BillCreating;
 
 class Bill extends Unguarded
@@ -18,7 +20,7 @@ class Bill extends Unguarded
     ];
 
     /** @var int */
-    protected $scheduleAheadMonths = 2;
+    protected $scheduleAheadMonths = 3;
 
     /**
      * Get the severity, based on days until due, of the bill.
@@ -76,11 +78,46 @@ class Bill extends Unguarded
      */
     public function createBill(array $attributes)
     {
+        $bills = [];
         $bill = $this->create($attributes);
+        $bills[] = $bill;
 
         if ($bill->recurring) {
             if ('weekly' === $bill->recurring_period) {
+                $limit = Carbon::today()->addMonths($this->scheduleAheadMonths);
+                $numWeeks = $limit->diffInWeeks($bill->due);
+                Collection::times($numWeeks, function ($n) use ($bill, &$bills, $attributes) {
+                    $attributes['due'] = $bill->due->addWeeks($n);
+                    $bills[] = $this->create($attributes);
+                });
+            } elseif ('bi-weekly' === $bill->recurring_period) {
+                $limit = Carbon::today()->addMonths($this->scheduleAheadMonths);
+                $numWeeks = $limit->diffInWeeks($bill->due);
+                Collection::times($numWeeks, function ($n) use ($bill, &$bills, $attributes) {
+                    if (0 == $n % 2) {
+                        $attributes['due'] = $bill->due->addWeeks($n);
+                        $bills[] = $this->create($attributes);
+                    }
+                });
+            } elseif ('monthly' === $bill->recurring_period) {
+                $limit = Carbon::today()->addMonths($this->scheduleAheadMonths);
+                $numMonths = $limit->diffInMonths($bill->due);
+                Collection::times($numMonths, function ($n) use ($bill, &$bills, $attributes) {
+                    $attributes['due'] = $bill->due->addMonths($n);
+                    $bills[] = $this->create($attributes);
+                });
+            } elseif ('bi-monthly' === $bill->recurring_period) {
+                $limit = Carbon::today()->addMonths($this->scheduleAheadMonths);
+                $numMonths = $limit->diffInMonths($bill->due);
+                Collection::times($numMonths, function ($n) use ($bill, &$bills, $attributes) {
+                    if (0 == $n % 2) {
+                        $attributes['due'] = $bill->due->addMonths($n);
+                        $bills[] = $this->create($attributes);
+                    }
+                });
             }
         }
+
+        return $bills;
     }
 }

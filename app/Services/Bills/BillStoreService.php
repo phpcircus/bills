@@ -36,6 +36,6 @@ class BillStoreService
     {
         session()->flash('notification', 'Bill was successfully created!');
 
-        return $this->model->create($this->validator->validate($attributes));
+        $this->model->createBill($this->validator->validate($attributes));
     }
 }
