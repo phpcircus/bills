@@ -20,7 +20,7 @@ class BillStoreValidation extends ValidationService
             'amount' => ['numeric', 'min:1'],
             'due' => ['date_format:Y-m-d'],
             'recurring' => ['boolean'],
-            'recurring_period' => ['nullable', 'in:weekly,bi-weekly,monthly,bi-monthly,quarterly,yearly', new RequiredIfRecurringRule],
+            'recurring_period' => ['nullable', 'in:weekly,bi-weekly,monthly,bi-monthly', new RequiredIfRecurringRule],
         ];
     }
 
