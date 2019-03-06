@@ -23,6 +23,16 @@ class Bill extends Unguarded
     protected $scheduleAheadMonths = 3;
 
     /**
+     * Get the amount in USD.
+     *
+     * @return string
+     */
+    public function getAmountAttribute($value)
+    {
+        return money_format('%i', $value/100);
+    }
+
+    /**
      * Get the severity, based on days until due, of the bill.
      *
      * @return string

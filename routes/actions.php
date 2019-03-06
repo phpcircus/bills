@@ -5,6 +5,9 @@ Route::group(['middleware' => ['auth', 'verified']], function ($router) {
     $router->get('/', LandingPage::class);
 
     // Bill Routes
-    $router->get('/bill/new', Bills\BillNew::class);
-    $router->post('/bill', Bills\BillStore::class);
+    $router->group(['prefix' => 'api'], function ($router) {
+        $router->get('/bills/new', Bills\BillNew::class);
+        $router->post('/bills', Bills\BillStore::class);
+        $router->post('/bills/{bill}', Bills\BillUpdate::class);
+    });
 });

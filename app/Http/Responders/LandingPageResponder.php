@@ -16,7 +16,7 @@ class LandingPageResponder extends Responder
     public function respond()
     {
         return View::component('Dashboard', [
-            'bills' => Bill::orderBy('due', 'asc')->get()->toArray(),
+            'bills' => Bill::orderBy('due', 'asc')->where('paid', false)->get()->toArray(),
         ]);
     }
 }

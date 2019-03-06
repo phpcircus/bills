@@ -34,4 +34,21 @@ class BillStoreValidation extends ValidationService
         return [
         ];
     }
+
+    /**
+     * Run any logic needed before validation.
+     *
+     * @return array
+     */
+    protected function beforeValidation()
+    {
+        if ('true' === $this->data['recurring']) {
+            $this->data['recurring'] = true;
+        }
+        if ('false' === $this->data['recurring']) {
+            $this->data['recurring'] = false;
+        }
+
+        return $this->data;
+    }
 }

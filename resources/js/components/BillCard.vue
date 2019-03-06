@@ -58,6 +58,8 @@
 </template>
 
 <script>
+    import Bill from 'Models/Bill';
+
     export default {
         props: {
             color: {
@@ -65,13 +67,17 @@
                 required: true,
                 default: 'red',
             },
-            bill: Object,
+            initialBill: Object,
         },
         data () {
             return {
                 paid: false,
                 showOptionsDropdown: false,
+                bill: null,
             }
+        },
+        created () {
+            this.bill = this.initialBill;
         },
         computed: {
             getClass () {
@@ -126,6 +132,13 @@
 
                 child.classList.toggle('bg-green');
                 parent.classList.toggle('justify-end');
+
+                if (this.paid) {
+                    Bill.markPaid(this.bill);
+                }
+
+                /* global Turbolinks */
+                // Turbolinks.visit('/');
             },
            toggleOptionsDropdown () {
                 this.showOptionsDropdown = ! this.showOptionsDropdown;

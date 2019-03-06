@@ -17,7 +17,8 @@
                 <!--Amount Field-->
                 <div class="mb-8">
                     <div class="flex w-4/5 justify-between py-1 mb-1">
-                        <input v-model="form.amount" class="w-full appearance-none bg-transparent border-b-2 border-blue-light text-grey-darkest p-1" type="number" step="any" placeholder="225.50" name="amount" id="amount" aria-label="Amount">
+                        <money v-model="form.amount" v-bind="money"  class="w-full appearance-none bg-transparent border-b-2 border-blue-light text-grey-darkest p-1"></money>
+                        <!-- <input v-model="form.amount" class="w-full appearance-none bg-transparent border-b-2 border-blue-light text-grey-darkest p-1" type="number" step="any" placeholder="225.50" name="amount" id="amount" aria-label="Amount"> -->
                     </div>
                     <label class="block w-4/5 text-grey-darkest text-left text-sm font-bold" for="amount">
                         <span v-if="errors.amount" class="text-red text-xs italic ml-2">{{ errors.amount }}</span>
@@ -73,18 +74,19 @@
 </template>
 
 <script>
+    import { Money } from 'v-money';
     import Bill from 'Models/Bill';
     import 'flatpickr/dist/flatpickr.css';
     import Multiselect from 'vue-multiselect';
     import flatPickr from 'vue-flatpickr-component';
 
     export default {
-        components: { flatPickr, Multiselect },
+        components: { flatPickr, Multiselect, Money },
         data () {
             return {
                 form: {
                     name: null,
-                    amount: null,
+                    amount: 0,
                     due: null,
                     recurring: false,
                     recurring_period: null,
@@ -98,17 +100,25 @@
                     altInput: true,
                     altFormat: 'm/d/Y',
                 },
+                money: {
+                    decimal: '.',
+                    thousands: ',',
+                    prefix: '$ ',
+                    suffix: '',
+                    precision: 2,
+                    masked: false
+                },
             }
         },
         methods: {
-            async createBill () {
+            createBill () {
                 if (this.form.recurring && this.form.recurring_period == null) {
                     this.errors.recurring_period = 'You must chose a recurring period.';
 
                     return;
                 }
-
-                await Bill.create(this.form);
+                console.log('recurring: ', this.form.recurring);
+                Bill.create(this.form);
 
                 /* global Turbolinks */
                 Turbolinks.visit('/');
