@@ -33,5 +33,8 @@
         "vue-snotify": "^3.2.1",
         "vue-stash": "^2.0.1-beta",
         "vue-template-compiler": "^2.6.5"
+    },
+    "dependencies": {
+        "v-money": "^0.8.1"
     }
 }

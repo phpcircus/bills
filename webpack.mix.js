@@ -22,6 +22,7 @@ mix.sass('resources/sass/app.scss', 'public/css')
             Helpers: path.resolve(__dirname, 'resources/js/helpers'),
             Libraries: path.resolve(__dirname, 'resources/js/lib'),
             Components: path.resolve(__dirname, 'resources/js/components'),
+            Config: path.resolve(__dirname, 'resources/js/config'),
             LayoutComponents: path.resolve(__dirname, 'resources/js/components/Layout'),
             Events: path.resolve(__dirname, 'resources/js/events'),
             Mixins: path.resolve(__dirname, 'resources/js/mixins'),
