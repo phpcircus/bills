@@ -19,7 +19,7 @@ class CreateBillsTable extends Migration
             $table->date('due');
             $table->boolean('paid')->default(0);
             $table->boolean('recurring')->default(0);
-            $table->enum('recurring_period', ['weekly', 'bi-weekly', 'monthly', 'bi-monthly'])->nullable();
+            $table->enum('recurring_period', ['none', 'weekly', 'bi-weekly', 'monthly', 'bi-monthly']);
             $table->timestamps();
         });
     }

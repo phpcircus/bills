@@ -20,7 +20,7 @@ class BillStoreValidation extends ValidationService
             'amount' => ['numeric', 'min:1'],
             'due' => ['date_format:Y-m-d'],
             'recurring' => ['boolean'],
-            'recurring_period' => ['nullable', 'in:weekly,bi-weekly,monthly,bi-monthly', new RequiredIfRecurringRule],
+            'recurring_period' => ['in:none,weekly,bi-weekly,monthly,bi-monthly', new RequiredIfRecurringRule],
         ];
     }
 
@@ -33,22 +33,5 @@ class BillStoreValidation extends ValidationService
     {
         return [
         ];
-    }
-
-    /**
-     * Run any logic needed before validation.
-     *
-     * @return array
-     */
-    protected function beforeValidation()
-    {
-        if ('true' === $this->data['recurring']) {
-            $this->data['recurring'] = true;
-        }
-        if ('false' === $this->data['recurring']) {
-            $this->data['recurring'] = false;
-        }
-
-        return $this->data;
     }
 }

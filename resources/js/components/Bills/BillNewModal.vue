@@ -89,10 +89,10 @@
                     amount: 0,
                     due: null,
                     recurring: false,
-                    recurring_period: null,
+                    recurring_period: 'none',
                 },
                 periods: [
-                    'weekly', 'bi-weekly', 'monthly', 'bi-monthly',
+                    'none', 'weekly', 'bi-weekly', 'monthly', 'bi-monthly',
                 ],
                 errors: [],
                 dateConfig: {
@@ -112,7 +112,7 @@
         },
         methods: {
             createBill () {
-                if (this.form.recurring && this.form.recurring_period == null) {
+                if (this.form.recurring == true && this.form.recurring_period == null) {
                     this.errors.recurring_period = 'You must chose a recurring period.';
 
                     return;
