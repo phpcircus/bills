@@ -11,8 +11,8 @@ class Bill extends Model {
         return Bill.instance;
     }
 
-    create ({ name, amount, due, paid, recurring, recurring_period }) {
-        const formData = this.buildFormData(name, amount, due, paid, recurring, recurring_period);
+    create ({ name, amount, due, recurring, recurring_period }) {
+        const formData = this.buildFormData(name, amount, due, recurring, recurring_period);
 
         return new Promise((resolve, reject) => {
             const requestOptions = {
@@ -68,7 +68,7 @@ class Bill extends Model {
         });
     }
 
-    buildFormData (name, amount, due, recurring, recurring_period, paid) {
+    buildFormData (name, amount, due, recurring, recurring_period, paid = false) {
         let formData = new FormData();
         formData.append('name', name);
         formData.append('amount', amount * 100);

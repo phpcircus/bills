@@ -17,6 +17,7 @@ class BillStore extends Action
      */
     public function __invoke(Request $request)
     {
+        dump($request->all());
         BillStoreService::call($request->all());
     }
 }
