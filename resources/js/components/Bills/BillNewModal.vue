@@ -92,7 +92,7 @@
                     recurring_period: 'none',
                 },
                 periods: [
-                    'none', 'weekly', 'bi-weekly', 'monthly', 'bi-monthly',
+                    'weekly', 'bi-weekly', 'monthly', 'bi-monthly',
                 ],
                 errors: [],
                 dateConfig: {
