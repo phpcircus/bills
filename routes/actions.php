@@ -8,6 +8,6 @@ Route::group(['middleware' => ['auth', 'verified']], function ($router) {
     $router->group(['prefix' => 'api'], function ($router) {
         $router->get('/bills/new', Bills\BillNew::class);
         $router->post('/bills', Bills\BillStore::class)->middleware('cast.bool');
-        $router->post('/bills/{bill}', Bills\BillUpdate::class);
+        $router->post('/bills/{bill}', Bills\BillUpdate::class)->middleware('cast.bool');
     });
 });

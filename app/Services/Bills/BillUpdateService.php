@@ -26,6 +26,7 @@ class BillUpdateService
      */
     public function run(Bill $bill, array $attributes)
     {
-        $bill->update($attributes);
+        dump($attributes);
+        $bill->updateBill($attributes);
     }
 }

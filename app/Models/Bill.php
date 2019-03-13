@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use App\Events\Models\Bill\BillCreating;
 
@@ -129,5 +130,16 @@ class Bill extends Unguarded
         }
 
         return $bills;
+    }
+
+    public function updateBill(array $attributes)
+    {
+        if ($attributes['editAll']) {
+            dump($attributes['editAll']);
+
+            return self::where('slug', $this->slug)->update(Arr::except($attributes, 'editAll'));
+        }
+
+        return $this->update(Arr::except($attributes, 'editAll'));
     }
 }
