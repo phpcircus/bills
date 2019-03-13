@@ -46,12 +46,12 @@ class Bill extends Model {
         return this.update({ id, name, amount, due, recurring, recurring_period, paid});
     }
 
-    update ({ id, name, amount, due, recurring, recurring_period, paid }) {
+    update ({ id, name, amount, due, recurring, recurring_period, paid }, editAll = false) {
         const formData = this.buildFormData(name, amount, due, recurring, recurring_period, paid);
         return new Promise((resolve, reject) => {
             const requestOptions = {
                 method: 'POST',
-                url: `${config.apiUrl}/bills/${id}`,
+                url: `${config.apiUrl}/bills/${id}?editAll=${editAll}`,
                 data: formData,
             };
 

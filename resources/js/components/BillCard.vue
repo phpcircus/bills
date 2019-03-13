@@ -36,12 +36,12 @@
                         </a>
                     </li>
                     <li class="option-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-green-light">
-                        <a href="#" @click.prevent="editBill(bill.id)" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
+                        <a href="#" @click.prevent="editBill()" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
                             <span class="inline-block">Edit</span>
                         </a>
                     </li>
                     <li class="option-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-red-light">
-                        <a href="#" @click.prevent="deleteBill(bill.id)" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
+                        <a href="#" @click.prevent="deleteBill()" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
                             <span class="inline-block">Delete</span>
                         </a>
                     </li>
@@ -118,11 +118,14 @@
             },
         },
         methods: {
-            editBill (id) {
-                console.log(`Editing bill # ${id}`);
+            editBill () {
+                this.toggleOptionsDropdown();
+                this.$modal.show('edit-bill', {
+                    bill: this.bill,
+                });
             },
-            deleteBill (id) {
-                console.log(`Deleting bill # ${id}`);
+            deleteBill () {
+                console.log(`Deleting bill.`);
             },
             togglePaid (e) {
                 this.paid = ! this.paid;
@@ -136,9 +139,6 @@
                 if (this.paid) {
                     Bill.markPaid(this.bill);
                 }
-
-                /* global Turbolinks */
-                // Turbolinks.visit('/');
             },
            toggleOptionsDropdown () {
                 this.showOptionsDropdown = ! this.showOptionsDropdown;
