@@ -135,9 +135,9 @@ class Bill extends Unguarded
     public function updateBill(array $attributes)
     {
         if ($attributes['editAll']) {
-            dump($attributes['editAll']);
+            self::where('slug', $this->slug)->delete();
 
-            return self::where('slug', $this->slug)->update(Arr::except($attributes, 'editAll'));
+            return $this->createBill(Arr::except($attributes, 'editAll'));
         }
 
         return $this->update(Arr::except($attributes, 'editAll'));
