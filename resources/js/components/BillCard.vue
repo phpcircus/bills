@@ -28,7 +28,7 @@
                 <div class="flex mt-auto">
                     <span class="text-xl text-white mr-2">PAID: </span>
                     <span @click.prevent.stop="togglePaid($event)" class="border rounded-full border-grey flex items-center cursor-pointer w-12 justify-start bg-grey-lightest">
-                        <span class="rounded-full border w-6 h-6 border-grey shadow-inner bg-red shadow"></span>
+                        <span class="rounded-full border w-6 h-6 border-grey shadow-inner shadow paid-toggle"></span>
                     </span>
                 </div>
             </div>
@@ -147,8 +147,8 @@
 </script>
 
 <style scoped lang="scss">
-    .bottom-shadow {
-        @apply .border-b .border-grey-lighter;
+    .paid-toggle {
+        background: #C02365;
     }
     .card {
         z-index: -1;
