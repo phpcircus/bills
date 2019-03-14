@@ -1,8 +1,8 @@
 <template>
-    <div class="container mx-auto">
+    <div class="layout">
         <app-modals></app-modals>
         <vue-snotify></vue-snotify>
-        <div class="flex w-full py-4">
+        <div class="flex w-full py-4 px-4 md:px-0">
             <brand-logo></brand-logo>
             <hamburger-menu class="ml-auto"></hamburger-menu>
         </div>
@@ -35,3 +35,23 @@
         },
     }
 </script>
+
+<style lang="scss">
+    .layout {
+        @screen md {
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @screen lg {
+            max-width: 992px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @screen xl {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>

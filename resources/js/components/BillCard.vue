@@ -1,6 +1,6 @@
 <template>
-    <div class="card rounded-lg mb-1 p-4" :class="[ getClass, { 'paid' : isPaid } ]">
-        <div class="flex items-start h-120p">
+    <div @click.prevent="toggleOptionsDropdown()" class="card p-4 bottom-shadow cursor-pointer" :class="[ getClass, { 'paid' : isPaid } ]">
+        <div class="flex items-start relative h-120p">
             <div class="flex flex-col h-full">
                 <h1 class="text-white text-xl lg:text-2xl font-semibold mb-2">
                     {{ bill.name }}
@@ -17,35 +17,14 @@
                         {{ bill.due_date }}
                     </p>
                 </div>
-                <div class="flex mt-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline-block align-middle" viewBox="0 0 24 24" fill="none" stroke="#22292F" stroke-width="3" stroke-linecap="square" stroke-linejoin="arcs"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                    <p class="text-black text-2xl font-semibold italic">
+            </div>
+            <div class="flex flex-col relative h-full ml-auto">
+                <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline-block align-middle" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" stroke-linecap="square" stroke-linejoin="arcs"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    <p class="text-white text-2xl font-semibold italic">
                         {{ bill.amount }}
                     </p>
                 </div>
-            </div>
-            <div class="flex flex-col relative h-full ml-auto">
-                <svg @click.prevent="toggleOptionsDropdown()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 mr-4 ml-auto cursor-pointer">
-                    <path class="primary" d="M6.8 3.45c.87-.52 1.82-.92 2.83-1.17a2.5 2.5 0 0 0 4.74 0c1.01.25 1.96.65 2.82 1.17a2.5 2.5 0 0 0 3.36 3.36c.52.86.92 1.8 1.17 2.82a2.5 2.5 0 0 0 0 4.74c-.25 1.01-.65 1.96-1.17 2.82a2.5 2.5 0 0 0-3.36 3.36c-.86.52-1.8.92-2.82 1.17a2.5 2.5 0 0 0-4.74 0c-1.01-.25-1.96-.65-2.82-1.17a2.5 2.5 0 0 0-3.36-3.36 9.94 9.94 0 0 1-1.17-2.82 2.5 2.5 0 0 0 0-4.74c.25-1.01.65-1.96 1.17-2.82a2.5 2.5 0 0 0 3.36-3.36zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
-                    <circle cx="12" cy="12" r="2" class="secondary"></circle>
-                </svg>
-                <ul v-if="showOptionsDropdown" class="flex flex-col list-reset text-left w-48 border border-grey bg-grey-lightest shadow-md z-50 options-menu">
-                    <li class="option-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-green-light">
-                        <a href="#" @click.native="hideOptionsDropdown()" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
-                            <span class="inline-block">Show Details</span>
-                        </a>
-                    </li>
-                    <li class="option-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-green-light">
-                        <a href="#" @click.prevent="editBill()" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
-                            <span class="inline-block">Edit</span>
-                        </a>
-                    </li>
-                    <li class="option-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-red-light">
-                        <a href="#" @click.prevent="deleteBill()" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
-                            <span class="inline-block">Delete</span>
-                        </a>
-                    </li>
-                </ul>
                 <div class="flex mt-auto">
                     <span class="text-xl text-white mr-2">PAID: </span>
                     <span @click.prevent.stop="togglePaid($event)" class="border rounded-full border-grey flex items-center cursor-pointer w-12 justify-start bg-grey-lightest">
@@ -53,6 +32,23 @@
                     </span>
                 </div>
             </div>
+            <ul v-if="showOptionsDropdown" class="flex flex-col list-reset text-left w-48 border border-grey bg-grey-lightest shadow-md z-50 options-menu">
+                <li class="option-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-green-light">
+                    <a href="#" @click.native="hideOptionsDropdown()" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
+                        <span class="inline-block">Show Details</span>
+                    </a>
+                </li>
+                <li class="option-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-green-light">
+                    <a href="#" @click.prevent="editBill()" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
+                        <span class="inline-block">Edit</span>
+                    </a>
+                </li>
+                <li class="option-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-red-light">
+                    <a href="#" @click.prevent="deleteBill()" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
+                        <span class="inline-block">Delete</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -151,12 +147,15 @@
 </script>
 
 <style scoped lang="scss">
+    .bottom-shadow {
+        @apply .border-b .border-grey-lighter;
+    }
     .card {
         z-index: -1;
     }
     .paid {
         opacity: 0.4;
-        background-image: linear-gradient(180deg,#38C172,#179b3c) !important;
+        background-image: linear-gradient(180deg,#8CB639, #9BCB41) !important;
     }
     .options-menu {
         position: absolute;
@@ -171,15 +170,15 @@
         }
     }
     .card-overdue {
-        background-image: linear-gradient(180deg,#f44881,#ec454f);
+        background-image: linear-gradient(180deg,#BE2263,#DB3483);
     }
     .card-high {
-        background-image: linear-gradient(180deg,#8b60ed,#b372bd);
+        background-image: linear-gradient(180deg,#BD2162,#E03988);
     }
     .card-medium {
-        background-image: linear-gradient(180deg,#f19a1a,#ffc73c);
+        background-image: linear-gradient(180deg,#CD7D0E,#EB9911);
     }
     .card-low {
-        background-image: linear-gradient(180deg,#6edcc4,#1aab8b);
+        background-image: linear-gradient(180deg,#8CB639, #9BCB41);
     }
 </style>
