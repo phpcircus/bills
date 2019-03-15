@@ -142,4 +142,24 @@ class Bill extends Unguarded
 
         return $this->update(Arr::except($attributes, 'editAll'));
     }
+
+    /**
+     * Get all unpaid overdue bills.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function overdueBills()
+    {
+        return $this->where('due', '<=', now())->where('paid', 0)->latest()->get();
+    }
+
+    /**
+     * Get all unpaid bills due within one week.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function billsDueWithinOneWeek()
+    {
+        return $this->where('due', '>', now())->where('due', '<=', now()->addDays(7))->where('paid', 0)->latest()->get();
+    }
 }

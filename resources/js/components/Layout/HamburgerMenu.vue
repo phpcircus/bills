@@ -5,23 +5,25 @@
         </button>
         <ul v-if="showMenuDropdown" class="flex flex-col list-reset text-left w-48 border border-grey bg-grey-lightest shadow-md z-50 hamburger-menu">
             <li class="menu-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-green-light">
+                <a href="/" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
+                    <span class="inline-block">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-green-light">
                 <a @click.prevent="showNewBillModal()" href="#" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
                     <span class="inline-block">New Bill</span>
                 </a>
-                <!-- <a href="/bill/new" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle block no-underline ">
-                    <span class="inline-block">New Bill</span>
-                </a> -->
             </li>
             <li class="menu-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-green-light">
-                <a href="#" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
+                <a href="/summary" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
                     <span class="inline-block">Summary</span>
                 </a>
             </li>
-            <li class="menu-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-green-light">
+            <!-- <li class="menu-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-green-light">
                 <a href="#" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
                     <span class="inline-block">Settings</span>
                 </a>
-            </li>
+            </li> -->
             <li class="menu-item text-center h-8 cursor-pointer text-left h-16 leading-loose border-b border-grey-light hover:bg-green-light">
                 <a href="#" @click.prevent="doLogout()" class="w-full text-grey-darkest font-lato font-normal uppercase align-middle inline-block no-underline p-4">
                     <span class="inline-block">Logout</span>
