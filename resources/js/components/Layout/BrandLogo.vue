@@ -1,5 +1,7 @@
 <template>
-    <a href="/" class="font-freude text-4xl text-red">AllPaid</a>
+    <a href="/" class="no-underline h-32 md:h-48">
+        <img src="/img/allPaid.png" class="h-full"/>
+    </a>
 </template>
 
 <script>
