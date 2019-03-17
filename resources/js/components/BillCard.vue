@@ -42,8 +42,15 @@
                 <div @click.prevent.stop="deleteBill()" class="flex justify-center items-center self-center h-full text-center w-1/4 bg-red-dark p-4 cursor-pointer">
                     <span class="text-white text-lg font-semibold uppercase">Delete</span>
                 </div>
-                <div @click.prevent.stop="togglePaid()" class="flex justify-center items-center self-center h-full text-center w-1/4 bg-green-dark p-4 cursor-pointer">
-                    <span class="text-white text-lg font-semibold uppercase">Paid</span>
+                <div @click.prevent.stop="markPaid()" class="flex justify-center items-center self-center relative h-full text-center w-1/4 bg-green-dark p-4 cursor-pointer">
+                    <span v-if="! busy" class="text-white text-lg font-semibold uppercase">Paid</span>
+                    <div v-else class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>
                 </div>
             </div>
         </transition>
@@ -64,6 +71,7 @@
                 bill: null,
                 region: null,
                 showOptions: false,
+                busy: false,
                 overdueCardClass: 'card-overdue',
                 highCardClass: 'card-high',
                 mediumCardClass: 'card-medium',
@@ -119,7 +127,9 @@
             deleteBill () {
                 console.log(`Deleting bill.`);
             },
-            togglePaid () {
+            markPaid () {
+                if (this.busy) return;
+                this.busy = true;
                 this.paid = ! this.paid;
 
                 if (this.paid) {
@@ -176,5 +186,63 @@
     }
     .slide-enter, .slide-leave-to {
         transform: translateX(-100%);
+    }
+    .spinner {
+        position: absolute;
+        top: calc(-50% + 30px);
+        left: calc(50% - 30px);
+        margin: 100px auto;
+        width: 50px;
+        height: 40px;
+        text-align: center;
+        font-size: 10px;
+    }
+
+    .spinner > div {
+        background-color: #fff;
+        height: 100%;
+        width: 6px;
+        display: inline-block;
+        -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+        animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    }
+
+    .spinner .rect2 {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+    }
+
+    .spinner .rect3 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    .spinner .rect4 {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+    }
+
+    .spinner .rect5 {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+    }
+
+    @-webkit-keyframes sk-stretchdelay {
+        0%, 40%, 100% {
+            -webkit-transform: scaleY(0.4)
+        }
+        20% {
+            -webkit-transform: scaleY(1.0)
+        }
+    }
+
+    @keyframes sk-stretchdelay {
+        0%, 40%, 100% {
+            transform: scaleY(0.4);
+            -webkit-transform: scaleY(0.4);
+        }  20% {
+            transform: scaleY(1.0);
+            -webkit-transform: scaleY(1.0);
+        }
     }
 </style>
