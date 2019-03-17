@@ -39,11 +39,18 @@
                 <div @click.prevent.stop="editBill()" class="flex justify-center items-center self-center h-full text-center w-1/4 bg-blue-dark p-4 cursor-pointer">
                     <span class="text-white text-lg font-semibold uppercase">Edit</span>
                 </div>
-                <div @click.prevent.stop="deleteBill()" class="flex justify-center items-center self-center h-full text-center w-1/4 bg-red-dark p-4 cursor-pointer">
-                    <span class="text-white text-lg font-semibold uppercase">Delete</span>
+                <div @click.prevent.stop="deleteBill()" class="flex justify-center items-center self-center relative h-full text-center w-1/4 bg-red-dark p-4 cursor-pointer">
+                    <span v-if="! deleteBusy" class="text-white text-lg font-semibold uppercase">Delete</span>
+                    <div v-else class="spinner">
+                        <div class="rect1"></div>
+                        <div class="rect2"></div>
+                        <div class="rect3"></div>
+                        <div class="rect4"></div>
+                        <div class="rect5"></div>
+                    </div>
                 </div>
                 <div @click.prevent.stop="markPaid()" class="flex justify-center items-center self-center relative h-full text-center w-1/4 bg-green-dark p-4 cursor-pointer">
-                    <span v-if="! busy" class="text-white text-lg font-semibold uppercase">Paid</span>
+                    <span v-if="! paidBusy" class="text-white text-lg font-semibold uppercase">Paid</span>
                     <div v-else class="spinner">
                         <div class="rect1"></div>
                         <div class="rect2"></div>
@@ -71,7 +78,8 @@
                 bill: null,
                 region: null,
                 showOptions: false,
-                busy: false,
+                paidBusy: false,
+                deleteBusy: false,
                 overdueCardClass: 'card-overdue',
                 highCardClass: 'card-high',
                 mediumCardClass: 'card-medium',
@@ -125,11 +133,14 @@
                 });
             },
             deleteBill () {
-                console.log(`Deleting bill.`);
+                if (this.deleteBusy) return;
+                this.deleteBusy = true;
+                this.paid = ! this.paid;
+                Bill.delete(this.bill.id);
             },
             markPaid () {
-                if (this.busy) return;
-                this.busy = true;
+                if (this.paidBusy) return;
+                this.paidBusy = true;
                 this.paid = ! this.paid;
 
                 if (this.paid) {

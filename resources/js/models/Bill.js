@@ -58,9 +58,25 @@ class Bill extends Model {
             axios(requestOptions).then( () => {
                 /* global Turbolinks */
                 Turbolinks.visit('/');
-
-                return resolve();
             }).catch(error => {
+                console.log(error.response);
+
+                return reject();
+            });
+        });
+    }
+
+    delete (id) {
+        return new Promise( (resolve, reject) => {
+            const requestOptions = {
+                method: 'DELETE',
+                url: `${config.apiUrl}/bills/${id}/delete`,
+            };
+
+            axios(requestOptions).then( () => {
+                /* global Turbolinks */
+                Turbolinks.visit('/');
+            }).catch( error => {
                 console.log(error.response);
 
                 return reject();
