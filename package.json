@@ -35,6 +35,8 @@
         "vue-template-compiler": "^2.6.5"
     },
     "dependencies": {
-        "v-money": "^0.8.1"
+        "move-js": "^0.5.0",
+        "v-money": "^0.8.1",
+        "zingtouch": "^1.0.6"
     }
 }

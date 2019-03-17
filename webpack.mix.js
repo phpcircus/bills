@@ -7,6 +7,7 @@ require('laravel-mix-purgecss');
 mix.js('resources/js/app.js', 'public/js');
 mix.copy('node_modules/vue-snotify/styles/material.css', 'public/css/vendor/notify.css');
 mix.copy('resources/sass/vendor/vue-multiselect.css', 'public/css/vendor/vue-multiselect.css');
+mix.copy('node_modules/move-js/move.min.js', 'public/js/vendor/move.min.js');
 mix.sass('resources/sass/app.scss', 'public/css')
    .options({
       processCssUrls: false,
