@@ -27,26 +27,23 @@
                                 {{ bill.amount }}
                             </p>
                         </div>
-                        <div class="flex mt-auto">
-                            <span class="text-xl text-white mr-2">PAID: </span>
-                            <span @click.prevent.stop="togglePaid($event)" class="border rounded-full border-grey flex items-center cursor-pointer w-12 justify-start bg-grey-lightest">
-                                <span class="rounded-full border w-6 h-6 border-grey shadow-inner shadow paid-toggle"></span>
-                            </span>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <transition name="slide">
             <div v-if="showOptions" class="flex w-full h-full absolute pin-t pin-l options-box">
-                <div class="flex justify-center items-center self-center h-full text-center w-1/3 bg-orange-dark p-4 cursor-pointer">
-                    <span class="text-white text-lg font-semibold uppercase">Cancel</span>
+                <div @click.prevent.stop="hideOptions()" class="flex justify-center items-center self-center h-full text-center w-1/4 bg-orange-dark p-4 cursor-pointer">
+                    <span class="text-white text-lg font-semibold uppercase">Hide Options</span>
                 </div>
-                <div @click.prevent="editBill()" class="flex justify-center items-center self-center h-full text-center w-1/3 bg-blue-dark p-4 cursor-pointer">
+                <div @click.prevent.stop="editBill()" class="flex justify-center items-center self-center h-full text-center w-1/4 bg-blue-dark p-4 cursor-pointer">
                     <span class="text-white text-lg font-semibold uppercase">Edit</span>
                 </div>
-                <div @click.prevent="deleteBill()" class="flex justify-center items-center self-center h-full text-center w-1/3 bg-red-dark p-4 cursor-pointer">
+                <div @click.prevent.stop="deleteBill()" class="flex justify-center items-center self-center h-full text-center w-1/4 bg-red-dark p-4 cursor-pointer">
                     <span class="text-white text-lg font-semibold uppercase">Delete</span>
+                </div>
+                <div @click.prevent.stop="togglePaid()" class="flex justify-center items-center self-center h-full text-center w-1/4 bg-green-dark p-4 cursor-pointer">
+                    <span class="text-white text-lg font-semibold uppercase">Paid</span>
                 </div>
             </div>
         </transition>
@@ -67,6 +64,10 @@
                 bill: null,
                 region: null,
                 showOptions: false,
+                overdueCardClass: 'card-overdue',
+                highCardClass: 'card-high',
+                mediumCardClass: 'card-medium',
+                lowCardClass: 'card-low',
             }
         },
         created () {
@@ -76,7 +77,7 @@
             const elem = document.getElementById('cards');
             this.region = new ZingTouch.Region(elem);
 
-            this.region.bind(this.$refs.card, 'tap', e => {
+            this.region.bind(this.$refs.innerCard, 'tap', e => {
                 this.toggleTranslateX(this.$refs.innerCard);
             }, false);
         },
@@ -105,20 +106,11 @@
             isPaid () {
                 return this.paid;
             },
-            overdueCardClass () {
-                return 'card-overdue';
-            },
-            highCardClass () {
-                return 'card-high';
-            },
-            mediumCardClass () {
-                return 'card-medium';
-            },
-            lowCardClass () {
-                return 'card-low';
-            },
         },
         methods: {
+            hideOptions () {
+                this.toggleTranslateX(this.$refs.innerCard);
+            },
             editBill () {
                 this.$modal.show('edit-bill', {
                     bill: this.bill,
@@ -127,14 +119,8 @@
             deleteBill () {
                 console.log(`Deleting bill.`);
             },
-            togglePaid (e) {
+            togglePaid () {
                 this.paid = ! this.paid;
-
-                let parent = e.currentTarget;
-                let child = parent.childNodes[0];
-
-                child.classList.toggle('bg-green');
-                parent.classList.toggle('justify-end');
 
                 if (this.paid) {
                     Bill.markPaid(this.bill);
@@ -154,9 +140,6 @@
 </script>
 
 <style scoped lang="scss">
-    .paid-toggle {
-        background: #C02365;
-    }
     .innerCard {
         transition-timing-function: ease-in;
         transition: 0.3s;
@@ -169,33 +152,17 @@
         opacity: 0.4;
         background-image: linear-gradient(180deg,#8CB639, #9BCB41) !important;
     }
-    .options-box {
-        // transition-timing-function: ease-in;
-        // transition: 0.3s;
-    }
-    .options-menu {
-        position: absolute;
-        top: 24px;
-        right: 48px;
-    }
-    .option-item {
-        &:hover {
-            span {
-                color: white;
-            }
-        }
-    }
     .card-overdue {
-        background-image: linear-gradient(180deg,#BE2263,#DB3483);
+        background-image: linear-gradient(180deg,rgb(190, 34, 99),rgb(219, 52, 131));
     }
     .card-high {
-        background-image: linear-gradient(180deg,#BD2162,#E03988);
+        background-image: linear-gradient(180deg,rgb(168, 69, 22),rgb(231, 89, 23));
     }
     .card-medium {
-        background-image: linear-gradient(180deg,#CD7D0E,#EB9911);
+        background-image: linear-gradient(180deg,rgb(205, 125, 14),rgb(235, 153, 17));
     }
     .card-low {
-        background-image: linear-gradient(180deg,#8CB639, #9BCB41);
+        background-image: linear-gradient(180deg,rgb(140, 182, 57), rgb(155, 203, 65));
     }
     .slide-enter-active {
         transition: all .3s ease;
@@ -203,8 +170,7 @@
     .slide-leave-active {
             transition: all .3s ease;
     }
-    .slide-enter, .slide-leave-to
-        /* .slide-leave-active below version 2.1.8 */ {
+    .slide-enter, .slide-leave-to {
         transform: translateX(-100%);
     }
 </style>
