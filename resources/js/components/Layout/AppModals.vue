@@ -33,4 +33,7 @@
         opacity: 1;
         overflow: visible;
     }
+    .v--modal-box.v--modal {
+        opacity: 1 !important;
+    }
 </style>
