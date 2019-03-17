@@ -91,7 +91,7 @@
         },
         mounted () {
             const elem = document.getElementById('cards');
-            this.region = new ZingTouch.Region(elem);
+            this.region = new ZingTouch.Region(elem, false, false);
 
             this.region.bind(this.$refs.innerCard, 'tap', e => {
                 this.toggleTranslateX(this.$refs.innerCard);
