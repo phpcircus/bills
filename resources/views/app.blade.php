@@ -21,6 +21,7 @@
         <script src="{{ mix('/js/manifest.js') }}" defer></script>
         <script src="{{ mix('/js/vendor.js') }}" defer></script>
         <script src="{{ mix('/js/app.js') }}" defer></script>
+        <script src="{{ mix('/js/vendor/move.min.js') }}" defer></script>
         <script>
             window.StoneBill = <?php echo json_encode([
                                 'notification' => get_notification(),
