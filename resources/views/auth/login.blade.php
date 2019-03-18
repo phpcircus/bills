@@ -2,11 +2,8 @@
 
 @section('content')
 <div class="flex flex-col items-center justify-start h-full mt-12">
-    <div class="container w-400p">
-        <img src="/img/allPaid.png" class="h-32 -ml-4" />
-    </div>
     <div class="flex flex-col w-400p bg-white text-center mt-4 border-green border-t-4 pt-4 rounded-lg shadow-md">
-        <p class="text-sm text-grey-dark uppercase pb-4">{{ __('Login') }}</p>
+        <img src="/img/allPaid.png" class="w-64 mb-4 self-center" />
         <form action="#" method="POST" @submit.prevent="login">
             @csrf
             <!--Email Field-->
