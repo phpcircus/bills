@@ -13,8 +13,8 @@
 </template>
 
 <script>
-    import AppModals from 'LayoutComponents/AppModals.vue';
     import BrandLogo from 'LayoutComponents/BrandLogo.vue';
+    import AppModals from 'LayoutComponents/AppModals.vue';
     import HamburgerMenu from 'LayoutComponents/HamburgerMenu.vue';
 
     export default {
