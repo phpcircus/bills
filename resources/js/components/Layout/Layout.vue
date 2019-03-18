@@ -2,7 +2,7 @@
     <div class="layout">
         <app-modals></app-modals>
         <vue-snotify></vue-snotify>
-        <div class="flex w-full py-4 px-4 md:px-0">
+        <div class="flex w-full py-4 px-4 md:px-0 mb-4 md:mb-8">
             <brand-logo></brand-logo>
             <hamburger-menu class="ml-auto"></hamburger-menu>
         </div>

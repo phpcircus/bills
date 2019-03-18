@@ -1,6 +1,6 @@
 <template>
     <layout title="Dashboard">
-        <div id="cards" class="mt-8 md:mt-12">
+        <div id="cards">
             <bill-card v-for="bill in bills" :key="bill.id" :initial-bill="bill"></bill-card>
         </div>
     </layout>

@@ -1,6 +1,6 @@
 <template>
-    <a href="/" class="no-underline h-32 md:h-48">
-        <img src="/img/allPaid.png" class="h-full"/>
+    <a href="/" class="no-underline h-6 md:h-8">
+        <img src="/img/allPaid_text.png" class="h-full"/>
     </a>
 </template>
 
