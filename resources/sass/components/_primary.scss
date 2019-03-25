@@ -32,6 +32,17 @@ span.pagination-link {
     @apply .text-grey-dark;
 }
 
+//-------------------------IOS Bug-------------------------//
+@media (pointer: fine) {
+  a span {
+    display: none;
+  }
+  a:hover span {
+    display: inline-block;
+  }
+}
+
+
 //--------------------Transition Styles--------------------//
 .to-hidden {
     display: none;
