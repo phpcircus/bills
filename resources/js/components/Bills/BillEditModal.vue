@@ -48,14 +48,7 @@
 
                 <!-- Recurring Period -->
                 <div v-if="form.recurring" class="mb-8 overflow-visible">
-                    <multiselect v-model="form.recurring_period"
-                                 :options="periods"
-                                 :searchable="false"
-                                 :show-labels="false"
-                                 :close-on-select="true"
-                                 open-direction="top"
-                                 placeholder="Choose period..."
-                                 class="mb-1"></multiselect>
+                    <v-select :options="periods" v-model="form.recurring_period" :searchable="false"></v-select>
                     <label class="block w-4/5 text-grey-darkest text-left text-sm font-bold">
                         <span v-if="errors.recurring_period" class="text-red text-xs italic ml-2">{{ errors.recurring_period }}</span>
                         <span class="text-sm text-grey-darkest">Recurring Period</span>
@@ -85,12 +78,11 @@
     import { Money } from 'v-money';
     import Bill from 'Models/Bill';
     import 'flatpickr/dist/flatpickr.css';
-    import Multiselect from 'vue-multiselect';
     import flatPickr from 'vue-flatpickr-component';
 
     export default {
         props: ['bill'],
-        components: { flatPickr, Multiselect, Money },
+        components: { flatPickr, Money },
         data () {
             return {
                 form: null,

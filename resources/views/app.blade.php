@@ -15,7 +15,6 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/vendor/notify.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/vendor/vue-multiselect.css') }}" rel="stylesheet">
 
         <!-- Scripts -->
         <script src="{{ mix('/js/manifest.js') }}" defer></script>
