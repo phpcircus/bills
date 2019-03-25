@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VModal from 'vue-js-modal'
 import Snotify, { SnotifyPosition } from 'vue-snotify';
+import vSelect from 'vue-select';
 
 // Register all the Vue components
 const files = require.context('../../', true, /\.vue$/i);
@@ -30,6 +31,9 @@ document.addEventListener('turbolinks:load', (event) => {
     Vue.use(Snotify, options);
 
     Vue.use(VModal, { componentName: "modal-component" });
+
+    // vue-select component registration
+    Vue.component('v-select', vSelect)
 
     window.vue = new Vue({
         render: h => h(

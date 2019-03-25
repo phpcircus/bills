@@ -18,7 +18,6 @@
                 <div class="mb-8">
                     <div class="flex w-4/5 justify-between py-1 mb-1">
                         <money v-model="form.amount" v-bind="money"  class="w-full appearance-none bg-transparent border-b-2 border-blue-light text-grey-darkest p-1"></money>
-                        <!-- <input v-model="form.amount" class="w-full appearance-none bg-transparent border-b-2 border-blue-light text-grey-darkest p-1" type="number" step="any" placeholder="225.50" name="amount" id="amount" aria-label="Amount"> -->
                     </div>
                     <label class="block w-4/5 text-grey-darkest text-left text-sm font-bold" for="amount">
                         <span v-if="errors.amount" class="text-red text-xs italic ml-2">{{ errors.amount }}</span>
@@ -49,13 +48,7 @@
 
                 <!-- Recurring Period -->
                 <div v-if="form.recurring" class="mb-8">
-                    <multiselect v-model="form.recurring_period"
-                                 :options="periods"
-                                 :searchable="false"
-                                 :show-labels="false"
-                                 :close-on-select="true"
-                                 placeholder="Choose period..."
-                                 class="mb-1"></multiselect>
+                    <v-select :options="periods" v-model="form.recurring_period" :searchable="false"></v-select>
                     <label class="block w-4/5 text-grey-darkest text-left text-sm font-bold">
                         <span v-if="errors.recurring_period" class="text-red text-xs italic ml-2">{{ errors.recurring_period }}</span>
                         <span class="text-sm text-grey-darkest">Recurring Period</span>
@@ -77,11 +70,10 @@
     import { Money } from 'v-money';
     import Bill from 'Models/Bill';
     import 'flatpickr/dist/flatpickr.css';
-    import Multiselect from 'vue-multiselect';
     import flatPickr from 'vue-flatpickr-component';
 
     export default {
-        components: { flatPickr, Multiselect, Money },
+        components: { flatPickr, Money },
         data () {
             return {
                 form: {
