@@ -1,6 +1,6 @@
 <template>
     <div>
-        <modal-component name="new-bill" width="60%" :maxWidth="600" :adaptive="true" height="auto" class="text-center center">
+        <modal-component name="new-bill" width="80%" :maxWidth="1000" :adaptive="true" height="auto" class="text-center center">
             <bill-new-modal></bill-new-modal>
         </modal-component>
         <modal-component name="edit-bill" width="80%" :maxWidth="1000" :adaptive="true" :delay="250" height="auto" class="text-center center" @before-open="beforeOpenEditBill($event)">
