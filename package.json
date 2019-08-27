@@ -15,7 +15,7 @@
         "eslint": "^5.12.1",
         "eslint-plugin-vue": "^4.7.1",
         "javel": "^0.1.4",
-        "jquery": "^3.2",
+        "jquery": "^3.4",
         "laravel-mix": "^4.0.7",
         "laravel-mix-purgecss": "^3.0",
         "lodash": "^4.17.5",
