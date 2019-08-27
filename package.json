@@ -18,7 +18,7 @@
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
         "laravel-mix-purgecss": "^3.0",
-        "lodash": "^4.17.5",
+        "lodash": "^4.17.13",
         "moment-timezone": "^0.5.23",
         "pusher-js": "^4.3.1",
         "resolve-url-loader": "^2.3.1",
